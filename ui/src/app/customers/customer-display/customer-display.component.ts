@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerDisplayComponent implements OnInit {
 
+  customer = {id: 1, name: 'Luis'};
   constructor() { }
 
   ngOnInit() {

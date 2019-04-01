@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerListComponent implements OnInit {
 
+  customers = [{id: 1, name: 'Luis'}, {id: 2, name: 'Hansel'}]
   constructor() { }
 
   ngOnInit() {

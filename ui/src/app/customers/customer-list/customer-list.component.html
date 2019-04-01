@@ -1,3 +1,13 @@
-<p>
-  customer-list works!
-</p>
+<div>
+  <a routerLink="/customers/add">Add</a>
+</div>
+<table>
+  <tbody>
+    <tr *ngFor="let c of customers">
+      <td>{{c.id}}</td>
+      <td>{{c.name}}</td>
+      <td><a routerLink="/customers/display">Display</a></td>
+      <td><a routerLink="/customers/edit">Edit</a></td>
+    </tr>
+  </tbody>
+</table>
