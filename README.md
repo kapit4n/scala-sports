@@ -42,6 +42,9 @@ Read more @ http://bit.ly/2AStvhK
 
 * This seed is not using [scala play views](https://www.playframework.com/documentation/2.6.x/ScalaTemplates). All the views and frontend associated routes are served via [Angular](https://angular.io/) code base under `ui` directory.
 
+## Resources
+- GET/PUT/POST/DELETE http://localhost:9000/api/team
+
 ## Complete Directory Layout
 
 ```
