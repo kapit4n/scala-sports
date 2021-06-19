@@ -1,31 +1,22 @@
 package controllers
 
-import javax.inject._
+import dal.TeamDAO
 
+import javax.inject._
 import play.api.libs.json.Json
 import play.api.mvc._
 import play.api.libs.json._
 import play.api.data.Forms._
 import play.api.data.Form
 import play.api.data._
+import models._
 
-case class Team(var name: String, var description: String)
+import scala.concurrent.ExecutionContext
 
 case class TeamForm(name: String, description: String)
 
-object Team {
-  implicit val implicitTeamWrites = new Writes[Team] {
-    def writes(c: Team): JsValue = {
-      Json.obj(
-        "name" -> c.name,
-        "description" -> c.description
-      )
-    }
-  }
-}
-
 @Singleton
-class TeamController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class TeamController @Inject()(cc: ControllerComponents, teamDao: TeamDAO)(implicit ec: ExecutionContext) extends AbstractController(cc) {
   val teamForm: Form[TeamForm] =  Form {
     mapping(
       "name" -> text,
@@ -33,8 +24,10 @@ class TeamController @Inject()(cc: ControllerComponents) extends AbstractControl
     )(TeamForm.apply)(TeamForm.unapply)
   }
 
-  def list = Action {
-    Ok(Json.toJson(Seq(Team("Barcelona", "gg"), Team("Real Madrid", "jj"))))
+  def list = Action.async {
+    teamDao.all().map{ res =>
+      Ok(Json.toJson(res))
+    }
   }
 
   def create = Action { implicit request =>

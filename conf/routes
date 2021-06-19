@@ -9,7 +9,6 @@ GET     /                           controllers.FrontendController.index()
 GET     /api/summary                controllers.HomeController.appSummary
 GET     /api/customers              controllers.HomeController.customerList
 
-
 # Team
 GET /api/teams  controllers.TeamController.list
 POST /api/teams  controllers.TeamController.create

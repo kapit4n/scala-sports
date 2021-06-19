@@ -12,4 +12,9 @@ scalaVersion := "2.13.6"
 
 libraryDependencies += guice
 // libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "3.0.0" % Test
-libraryDependencies += "com.h2database" % "h2" % "1.4.196"
+
+libraryDependencies ++= Seq(
+  "com.typesafe.play" %% "play-slick" % "5.0.0",
+  "com.typesafe.play" %% "play-slick-evolutions" % "5.0.0",
+  "org.xerial" % "sqlite-jdbc" % "3.30.1",
+)
